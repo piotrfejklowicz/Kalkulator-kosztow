@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+    <form>
+        <label for="priceEur">Podaj cenę pojazdu w EUR: </label>
+        <input name="priceEur" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" min="0.01" lang="pl" oninput="przeliczNaPln(this.value)">
+        
+        <label for="pricePln">Podaj cenę pojazdu w PLN: </label>
+        <input name="pricePln" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" min="0.04" lang="pl" oninput="przeliczNaEur(this.value)">
+        
+        <label for="transport">Transport z: </label>
+        <select name="transport" onchange="obliczWynik()">
+            <option value="1800">Belgia</option>
+            <option value="1800">Holandia</option>
+            <option value="1600">Niemcy</option>
+            <option value="1800">Luksemburg</option>
+            <option value="0">Inne</option>
+        </select>
+
+        <label for="akcyza">Akcyza: </label>
+        <select name="akcyza" onchange="obliczWynik()">
+            <option value="3.1">Akcyza dla pojemności do 2.0</option>
+            <option value="18.6">Akcyza dla pojemności powyżej 2.0</option>
+        </select>
+        
+        <p>Całkowita kwota: <span id="totalPrice"></span></p>
+        <br>
+        <br>
+        <p><small>Średni kurs euro: <span id="kursEuro"></span> zł (źródło: nbp.pl)</small></p>
+    </form>
+
+</body>
+</html>
+
+
